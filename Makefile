@@ -1,12 +1,20 @@
-all: game
+all: project test
 
-game: main.cpp
-	g++ main.cpp -o game
+project: main.cpp Company
+	g++ main.cpp Company.o -o project
 
-test: dummy
+Company: Company.h Company.cpp
+	g++ -c Company.cpp
+
+CompanyTest: tests/Company.cpp Company.o
+	g++ tests/Company.cpp Company.o -o tests/CompanyTest
+
+test: dummy CompanyTest
+	tests/dummy
+	tests/CompanyTest
 
 dummy: tests/dummy.cpp
-	g++ tests/dummy.cpp -o dummytest
+	g++ tests/dummy.cpp -o tests/dummy
 
 clean:
-	rm -f game dummytest
+	rm -f project tests/dummy Company.o tests/CompanyTest
