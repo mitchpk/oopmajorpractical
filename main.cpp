@@ -2,6 +2,7 @@
 #include "Package.h"
 #include "Destination.h"
 #include "Vehicle.h"
+#include "Truck.h"
 #include "Company.h"
 
 const Destination destinations[] = {
