@@ -4,8 +4,8 @@
 #include "Vehicle.h"
 #include "Company.h"
 
-#include "Options/GetCompanyName.h"
-#include "Options/BuyFuel.h"
+#include "Options/GetCompanyNameOption.h"
+#include "Options/BuyFuelOption.h"
 #include "Options/GetCompanyBalanceOption.h"
 
 
@@ -46,15 +46,15 @@ void listVehicles(Company &company) {
     }
 }
 
-std::vector<Option> declareOptions()
+std::vector<Option> generateOptions()
 {
 
      //define options here (could move to make more tidy)
 
     std::vector<Option> options;
 
-    GetCompanyName gcn;
-    BuyFuel bf;
+    GetCompanyNameOption gcn;
+    BuyFuelOption bf;
     GetCompanyBalanceOption gcb;
 
     options.push_back(gcn);
@@ -66,9 +66,16 @@ std::vector<Option> declareOptions()
     return options;
 }
 
+void printOptions(std::vector<Option> options)
+{
+    for (int i = 0; i < options.size(); i++){
+        std::cout << i + 1 << ". " << options[i].getName() << std::endl;
+    }
+}
+
 int main() {
 
-
+    generateOptions()[2].execute();
     std::cout << welcome << std::endl;
     std::string desiredName;
     std::cin >> desiredName;
@@ -82,9 +89,28 @@ int main() {
 
     //runs loop through options
 
-    for (int i = 0; i < declareOptions().size(); i++){
-        std::cout << i + 1 << ". " << declareOptions()[i].getName() << std::endl;
+    printOptions(generateOptions());
+
+    //execute the option chosen, also make sure the option exists
+    int selectedOption = 100;
+
+    //check if option is in range
+    // selected option works because +1 is the size of the vector
+    // because we are printing out index of option +1
+    while(selectedOption > generateOptions().size()){
+        std::cout << "Please select an option as listed." << std::endl;
+        std::cin >> selectedOption;
+        //need way more edge case testing
+        if(selectedOption > generateOptions().size()){
+            continue;
+        }
     }
+
+    //if option is valid, it will break out of while loop and continue here
+    std::cout << "..." << std::endl;
+
+    // now you execute the option selected
+    generateOptions()[selectedOption].execute();
 
     while (!company.isBankrupt())
     {

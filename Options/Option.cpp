@@ -9,9 +9,3 @@ std::string Option::getName()
 {
     return Name;
 }
-
-void Option::execute()
-{
-    //empty because it must be defined by
-    //every option
-}

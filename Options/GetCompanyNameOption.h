@@ -3,11 +3,11 @@
 #include <string>
 
 
-class GetCompanyName : public Option
+class GetCompanyNameOption : public Option
 {
 
 public:
-    GetCompanyName()
+    GetCompanyNameOption()
     {
         Option::Name = "Get Company Name";
     }

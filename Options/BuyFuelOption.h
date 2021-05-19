@@ -3,18 +3,18 @@
 #include <string>
 
 
-class BuyFuel : public Option
+class BuyFuelOption : public Option
 {
 
 public:
-    BuyFuel()
+    BuyFuelOption()
     {
         Option::Name = "Buy fuel.";
     }
 
     void execute()
     {
-
+        std::cout << "Buy fuel logic here";
     }
 
 
