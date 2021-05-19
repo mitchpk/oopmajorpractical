@@ -1,7 +1,11 @@
 all: project test
 
-project: main.cpp Company Vehicle Package Destination
-	g++ main.cpp Company.o Vehicle.o Package.o Destination.o -o project
+project: main.cpp Company Vehicle Package Destination Option
+	g++ main.cpp Company.o Vehicle.o Package.o Destination.o Option.o -o project
+
+Option: Options/Option.h Options/Option.cpp
+	g++ -c Options/Option.cpp
+
 
 Company: Company.h Company.cpp
 	g++ -c Company.cpp
@@ -26,4 +30,4 @@ dummy: tests/dummy.cpp
 	g++ tests/dummy.cpp -o tests/dummy
 
 clean:
-	rm -f project Company.o Vehicle.o Package.o Destination.o tests/CompanyTest tests/dummy 
+	rm -f project Company.o Vehicle.o Package.o Destination.o tests/CompanyTest tests/dummy

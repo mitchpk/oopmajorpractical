@@ -8,13 +8,17 @@
 // Represents the user's company, including their assets in vehicles and current balance
 class Company {
 public:
-    Company(std::string name);
+    Company(std::string name, int startingBalance);
     ~Company();
+
+    std::string getName();
+
+    int getBalance();
 
     // Purchase a vehicle, returns true if the vehicle has been bought, false if insufficient balance
     bool purchaseVehicle(Vehicle *vehicle);
 
-    // Purchase some fuel 
+    // Purchase some fuel
     // Returns true or false depending on the type of fuel, maximum capacity of the vehicle and current company balance
     bool purchaseFuel(Vehicle *vehicle, Fuel fuel, int quantity);
 
@@ -30,8 +34,18 @@ public:
     // Get current balance
     bool isBankrupt();
 
+    //Sets the balance of the company
+    void setBalance(int amount);
+
+    //Adds to company balance
+    void addFunds(int amount);
+
+    //Subtracts from company balance
+    void subractFunds(int amount);
+
 private:
     int m_balance;
     std::string m_name;
     std::vector<Vehicle*> m_ownedVehicles;
+    bool m_bankrupt;
 };
