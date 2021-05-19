@@ -3,8 +3,7 @@
 #include <string>
 
 #include "Fuel.h"
-
-class Vehicle;
+#include "Vehicle.h"
 
 // Represents the user's company, including their assets in vehicles and current balance
 class Company {

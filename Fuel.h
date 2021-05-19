@@ -3,8 +3,14 @@
 
 class Fuel {
 public:
+    enum FuelType {
+        AIRCRAFT,
+        TRUCK,
+        SHIP
+    };
+
     float efficiency;
     std::string name;
-    std::string type;
+    FuelType type;
     int pricePerUnit;
 };
