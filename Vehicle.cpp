@@ -5,9 +5,12 @@
 #include "Vehicle.h"
 
 
-Vehicle::Vehicle(int speed, float fuelBurnRate) {
+Vehicle::Vehicle(std::string name, int speed, int fuelCapacity, float fuelBurnRate, int price) {
     m_speed = speed;
-    m_burnRate = fuelBurnRate;
+    m_fuelBurnRate = fuelBurnRate;
+    m_name = name;
+    m_fuelCapacity = fuelCapacity;
+    m_price = price;
 }
 
 
@@ -16,7 +19,7 @@ int Vehicle::getSpeed() {
 }
 
 float Vehicle::getFuelBurnRate() {
-    return m_burnRate;
+    return m_fuelBurnRate;
 }
 
 std::vector<Package> Vehicle::getPackages() {
@@ -30,4 +33,16 @@ bool Vehicle::loadPackage(Package package) {
     }
 
     return false;
+}
+
+std::string Vehicle::getName() {
+    return m_name;
+}
+
+int Vehicle::getFuelCapacity() {
+    return m_fuelCapacity;
+}
+
+int Vehicle::getPrice() {
+    return m_price;
 }

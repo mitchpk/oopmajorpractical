@@ -24,6 +24,12 @@ public:
     // Check to see if the company owns a given vehicle
     bool ownsVehicle(Vehicle *vehicle);
 
+    // Get all owned vehicles
+    std::vector<Vehicle*> getVehicles();
+
+    // Get current balance
+    bool isBankrupt();
+
 private:
     int m_balance;
     std::string m_name;

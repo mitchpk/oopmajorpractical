@@ -3,7 +3,7 @@
 
 Company::Company(std::string name) {
     m_name = name;
-    m_balance = 0;
+    m_balance = 1000;
 }
 
 Company::~Company() {
@@ -26,4 +26,12 @@ bool Company::ownsVehicle(Vehicle *vehicle) {
 
 bool Company::beginDelivery(Vehicle *vehicle, std::string destination) {
     return true;
+}
+
+bool Company::isBankrupt() {
+    return m_balance <= 0;
+}
+
+std::vector<Vehicle*> Company::getVehicles() {
+    return m_ownedVehicles;
 }
