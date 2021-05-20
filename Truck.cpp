@@ -8,10 +8,9 @@ Truck::~Truck() {}
 void Truck::travel() {
     Destination destination = m_packages[0].getDestination();
     int distanceToTravel = destination.getDistance();
-
 }
 
-bool Truck::buyFuel(Fuel fuel, int *companyBalance) {
+bool Truck::buyFuel(Fuel fuel) {
     if (fuel.type != Fuel::TRUCK || m_remainingFuel == m_fuelCapacity) {
         return false;
     }

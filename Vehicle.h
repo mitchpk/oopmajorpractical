@@ -5,12 +5,15 @@
 #include <vector>
 
 #include "Package.h"
+#include "Fuel.h"
+
+class Company;
 
 class Vehicle
 {
 public:
-    Vehicle(std::string name, int speed, int fuelCapacity, float fuelBurnRate, int price);
-    virtual ~Vehicle() = 0;
+    Vehicle(std::string name, int speed, int fuelCapacity, float fuelBurnRate, int price, Fuel fuel);
+    virtual ~Vehicle() {};
 
     int getSpeed();
     float getFuelBurnRate();
@@ -21,14 +24,17 @@ public:
     int getPrice();
 
     virtual void travel() = 0;
-    virtual bool buyFuel(int amount) = 0;
+    virtual bool buyFuel(Fuel fuel) = 0;
     virtual std::string getType() = 0;
 
-private:
+protected:
     int m_speed;
     float m_fuelBurnRate;
     std::vector<Package> m_packages;
     std::string m_name;
     int m_fuelCapacity;
+    int m_remainingFuel;
     int m_price;
-};
+    Fuel m_equippedFuel;
+    Company *m_ownedBy;
+};;

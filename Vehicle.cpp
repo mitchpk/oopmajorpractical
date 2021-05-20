@@ -5,12 +5,14 @@
 #include "Vehicle.h"
 
 
-Vehicle::Vehicle(std::string name, int speed, int fuelCapacity, float fuelBurnRate, int price) {
+Vehicle::Vehicle(std::string name, int speed, int fuelCapacity, float fuelBurnRate, int price, Fuel fuel) {
     m_speed = speed;
     m_fuelBurnRate = fuelBurnRate;
     m_name = name;
     m_fuelCapacity = fuelCapacity;
     m_price = price;
+    m_remainingFuel = fuelCapacity;
+    m_equippedFuel = fuel;
 }
 
 
