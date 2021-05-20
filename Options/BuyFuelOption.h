@@ -14,7 +14,7 @@ public:
 
     void execute()
     {
-        std::cout << "Buy fuel logic here";
+        std::cout << "Buy fuel logic here" << std::endl;
     }
 
 

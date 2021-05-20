@@ -46,36 +46,32 @@ void listVehicles(Company &company) {
     }
 }
 
-std::vector<Option> generateOptions()
+std::vector<Option*> generateOptions()
 {
 
      //define options here (could move to make more tidy)
 
-    std::vector<Option> options;
+    std::vector<Option*> options;
 
-    GetCompanyNameOption gcn;
-    BuyFuelOption bf;
-    GetCompanyBalanceOption gcb;
-
-    options.push_back(gcn);
-    options.push_back(bf);
-    options.push_back(gcb);
+    options.push_back(new GetCompanyNameOption());
+    options.push_back(new BuyFuelOption());
+    options.push_back(new GetCompanyBalanceOption());
 
     //end of defining options
 
     return options;
 }
 
-void printOptions(std::vector<Option> options)
+void printOptions(std::vector<Option*> options)
 {
     for (int i = 0; i < options.size(); i++){
-        std::cout << i + 1 << ". " << options[i].getName() << std::endl;
+        std::cout << i + 1 << ". " << options[i]->getName() << std::endl;
     }
 }
 
 int main() {
 
-    generateOptions()[2].execute();
+    generateOptions()[2]->execute();
     std::cout << welcome << std::endl;
     std::string desiredName;
     std::cin >> desiredName;
@@ -87,33 +83,34 @@ int main() {
 
     std::cout << "Check the menu below to see your options." << std::endl;
 
-    //runs loop through options
-
-    printOptions(generateOptions());
-
-    //execute the option chosen, also make sure the option exists
-    int selectedOption = 100;
-
-    //check if option is in range
-    // selected option works because +1 is the size of the vector
-    // because we are printing out index of option +1
-    while(selectedOption > generateOptions().size()){
-        std::cout << "Please select an option as listed." << std::endl;
-        std::cin >> selectedOption;
-        //need way more edge case testing
-        if(selectedOption > generateOptions().size()){
-            continue;
-        }
-    }
-
-    //if option is valid, it will break out of while loop and continue here
-    std::cout << "..." << std::endl;
-
-    // now you execute the option selected
-    generateOptions()[selectedOption].execute();
-
+    
     while (!company.isBankrupt())
     {
+        //runs loop through options
+
+        printOptions(generateOptions());
+
+        //execute the option chosen, also make sure the option exists
+        int selectedOption = 100;
+
+        //check if option is in range
+        // selected option works because +1 is the size of the vector
+        // because we are printing out index of option +1
+        while(selectedOption > generateOptions().size()){
+            std::cout << "Please select an option as listed." << std::endl;
+            std::cin >> selectedOption;
+            //need way more edge case testing
+            if(selectedOption > generateOptions().size()){
+                continue;
+            }
+        }
+
+        //if option is valid, it will break out of while loop and continue here
+        std::cout << "..." << std::endl;
+
+        // now you execute the option selected
+        generateOptions()[selectedOption-1]->execute();
+
         listVehicles(company);
         getchar();
     }

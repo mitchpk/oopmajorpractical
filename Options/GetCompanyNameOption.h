@@ -14,7 +14,6 @@ public:
 
     void execute()
     {
-
         std::cout << Name << std::endl;
     }
 

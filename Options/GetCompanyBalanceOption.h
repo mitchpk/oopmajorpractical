@@ -14,7 +14,7 @@ public:
 
     void execute()
     {
-        std::cout << "get company balance logic here";
+        std::cout << "get company balance logic here" << std::endl;
     }
 
 
