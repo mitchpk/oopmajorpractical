@@ -1,21 +1,11 @@
-#include <iostream>
 #include "Option.h"
+#include <iostream>
 #include <string>
 
-
-class BuyFuelOption : public Option
-{
+class BuyFuelOption : public Option {
 
 public:
-    BuyFuelOption()
-    {
-        Option::Name = "Buy fuel.";
-    }
+    std::string getName() override { return "Buy fuel"; }
 
-    void execute()
-    {
-        std::cout << "Buy fuel logic here" << std::endl;
-    }
-
-
+    void execute(Company *company) override { std::cout << "Buy fuel logic here" << std::endl; }
 };

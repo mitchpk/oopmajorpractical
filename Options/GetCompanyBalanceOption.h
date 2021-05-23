@@ -5,17 +5,12 @@
 
 class GetCompanyBalanceOption : public Option
 {
-
 public:
-    GetCompanyBalanceOption()
-    {
-        Option::Name = "Get Company Balance.";
+    std::string getName() override {
+        return "Get company balance";
     }
 
-    void execute()
-    {
-        std::cout << "get company balance logic here" << std::endl;
+    void execute(Company *company) override {
+        std::cout << "Company balance: " << company->getBalance() << std::endl;
     }
-
-
 };

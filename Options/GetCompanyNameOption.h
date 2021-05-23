@@ -5,17 +5,12 @@
 
 class GetCompanyNameOption : public Option
 {
-
 public:
-    GetCompanyNameOption()
-    {
-        Option::Name = "Get Company Name";
+    std::string getName() override {
+        return "Get company name";
     }
 
-    void execute()
-    {
-        std::cout << Name << std::endl;
+    void execute(Company *company) override {
+        std::cout << "Company name: " << company->getName() << std::endl;
     }
-
-
 };

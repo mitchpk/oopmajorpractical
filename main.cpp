@@ -105,7 +105,7 @@ int main() {
             int selected = std::stoi(selectedOption);
             if (selected <= generateOptions().size() && selected > 0) {
                 // now you execute the option selected
-                generateOptions()[selected - 1]->execute();
+                generateOptions()[selected - 1]->execute(&company);
 
             } else {
             std::cout << "Invalid option" << std::endl;

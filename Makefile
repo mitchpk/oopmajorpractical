@@ -1,11 +1,7 @@
 all: project test
 
-project: main.cpp Company Vehicle Package Destination Option
-	g++ main.cpp Company.o Vehicle.o Package.o Destination.o Option.o -o project
-
-Option: Options/Option.h Options/Option.cpp
-	g++ -c Options/Option.cpp
-
+project: main.cpp Company Vehicle Package Destination
+	g++ main.cpp Company.o Vehicle.o Package.o Destination.o -o project
 
 Company: Company.h Company.cpp
 	g++ -c Company.cpp

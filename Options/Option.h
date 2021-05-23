@@ -1,14 +1,10 @@
+#pragma once
 #include <string>
 #include <iostream>
-#pragma once
+#include "../Company.h"
 
-
-class Option
-{
-
+class Option {
 public:
-
-    std::string Name;
-    std::string getName();
-    virtual void execute() = 0;
+    virtual std::string getName() = 0;
+    virtual void execute(Company *company) = 0;
 };
