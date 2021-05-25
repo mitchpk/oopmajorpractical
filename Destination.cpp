@@ -1,6 +1,7 @@
 #include "Destination.h"
 #include "Vehicle.h"
 
+// constructor
 Destination::Destination(std::string name, unsigned int distance, bool accessibleByAir, bool accessibleByLand, bool accessibleBySea) {
     m_name = name;
     m_distance = distance;
@@ -9,6 +10,7 @@ Destination::Destination(std::string name, unsigned int distance, bool accessibl
     m_accessibleBySea = accessibleBySea;
 }
 
+// returns whether or not the parameter vehicle can reach the destiation
 bool Destination::vehicleCanReach(Vehicle *vehicle) {
     if (vehicle->getType() == "Aircraft") {
         return m_accessibleByAir;
@@ -25,11 +27,12 @@ bool Destination::vehicleCanReach(Vehicle *vehicle) {
     return false;
 }
 
-
+// returns destinations distance
 unsigned int Destination::getDistance() {
     return m_distance;
 }
 
+// returns destinations name
 std::string Destination::getName() {
     return m_name;
 }

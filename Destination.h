@@ -3,12 +3,19 @@
 
 class Vehicle;
 
+// represents the destinations for packages to be delivered to
 class Destination {
 public:
+    // constructor
     Destination(std::string name, unsigned int distance, bool accessibleByAir, bool accessibleByLand, bool accessibleBySea);
 
+    // returns whether or not the parameter vehicle can reach this destination
     bool vehicleCanReach(Vehicle *vehicle);
+
+    // returns the destinations distance
     unsigned int getDistance();
+
+    // returns destination name
     std::string getName();
 
 private:

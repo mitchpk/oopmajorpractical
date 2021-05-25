@@ -6,12 +6,19 @@
 
 #include "Destination.h"
 
+// represents the packages to be delivered
 class Package {
 public:
+    // constructor
     Package(std::string description, Destination destination, int weight);
 
+    // returns weight of package
     int getWeight();
+
+    // returns description of package
     std::string getDescription();
+
+    // returns destination of package
     Destination getDestination();
 
 private:

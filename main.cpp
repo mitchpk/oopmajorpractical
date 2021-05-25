@@ -8,6 +8,7 @@
 #include "Options/GetCompanyBalanceOption.h"
 #include "Options/GetCompanyNameOption.h"
 
+// initialise array of destinations to deliver to
 const Destination destinations[] = {
     Destination("London", 3000, true, false, true),
     Destination("Sydney", 1000, true, true, false),
@@ -19,6 +20,7 @@ const Destination destinations[] = {
     Destination("Alice Springs", 1200, true, true, false),
 };
 
+// initialise array of packages to be delivered
 const Package packages[] = {
     Package("Teacups", destinations[0], 5),
     Package("Book", destinations[2], 2),
@@ -32,12 +34,15 @@ const std::string welcome =
         "manage and expand your own delivery company, shipping packages "
         "all over the world!\nTo begin, enter the name of your company: ";
 
+// function to list all owned vehicles by company in parameter
 void listVehicles(Company &company) {
     for (Vehicle *v : company.getVehicles()) {
+        // prints information about owned vehicles
         std::cout << v->getName() << std::endl;
         std::cout << "Fuel burn rate: " << v->getFuelBurnRate() << std::endl;
         std::cout << "Total fuel capacity" << v->getFuelCapacity() << std::endl;
         std::cout << "Loaded packages: " << std::endl;
+        // loops through all loaded packages and prints information
         for (Package p : v->getPackages()) {
             Destination d = p.getDestination();
             std::cout << p.getDescription() << " - " << d.getName() << " ("
@@ -62,6 +67,7 @@ std::vector<Option *> generateOptions() {
     return options;
 }
 
+//function to print selectable options
 void printOptions(std::vector<Option *> options) {
     for (int i = 0; i < options.size(); i++) {
         std::cout << i + 1 << ". " << options[i]->getName() << std::endl;
