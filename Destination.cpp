@@ -12,15 +12,15 @@ Destination::Destination(std::string name, unsigned int distance, bool accessibl
 
 // returns whether or not the parameter vehicle can reach the destiation
 bool Destination::vehicleCanReach(Vehicle *vehicle) {
-    if (vehicle->getType() == "Aircraft") {
+    if (vehicle->getType() == Vehicle::AIRCRAFT) {
         return m_accessibleByAir;
     }
 
-    if (vehicle->getType() == "Truck") {
+    if (vehicle->getType() == Vehicle::TRUCK) {
         return m_accessibleByLand;
     }
 
-    if (vehicle->getType() == "Ship") {
+    if (vehicle->getType() == Vehicle::SHIP) {
         return m_accessibleBySea;
     }
 

@@ -16,5 +16,5 @@ public:
     bool buyFuel(Fuel fuel) override;
 
     // returns "Aircraft"
-    std::string getType() override;
+    VehicleType getType() override;
 };

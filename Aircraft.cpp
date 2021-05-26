@@ -45,6 +45,6 @@ bool Aircraft::buyFuel(Fuel fuel) {
 }
 
 // returns "Aircraft"
-std::string Aircraft::getType() {
-    return "Aircraft";
+Vehicle::VehicleType Aircraft::getType() {
+    return Vehicle::AIRCRAFT;
 }

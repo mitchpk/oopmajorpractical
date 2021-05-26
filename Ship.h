@@ -6,17 +6,17 @@
 // the Vehicle class
 class Ship : public Vehicle {
 public:
-  // constructor
-  Ship(std::string name, int speed, int fuelCapacity, float fuelBurnRate,
-       int price, Fuel fuel, Company *company);
-  ~Ship();
+    // constructor
+    Ship(std::string name, int speed, int fuelCapacity, float fuelBurnRate,
+        int price, Fuel fuel, Company *company);
+    ~Ship();
 
-  // attempt to make a trip based on currently loaded packages
-  void travel() override;
+    // attempt to make a trip based on currently loaded packages
+    void travel() override;
 
-  // purchases fuel and returns true if successful
-  bool buyFuel(Fuel fuel) override;
+    // purchases fuel and returns true if successful
+    bool buyFuel(Fuel fuel) override;
 
-  // returns "Ship"
-  std::string getType() override;
+    // returns "Ship"
+    VehicleType getType() override;
 };

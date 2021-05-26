@@ -13,6 +13,12 @@ class Company;
 class Vehicle
 {
 public:
+    enum VehicleType {
+        AIRCRAFT,
+        TRUCK,
+        SHIP
+    };
+
     // constructor
     Vehicle(std::string name, int speed, int fuelCapacity, float fuelBurnRate, int price, Fuel fuel, Company *company);
 
@@ -43,7 +49,7 @@ public:
     // pure virtual functions to be defined in child classes
     virtual void travel() = 0;
     virtual bool buyFuel(Fuel fuel) = 0;
-    virtual std::string getType() = 0;
+    virtual VehicleType getType() = 0;
 
 protected:
     int m_speed;

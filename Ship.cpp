@@ -45,6 +45,6 @@ bool Ship::buyFuel(Fuel fuel) {
 }
 
 // returns "Ship"
-std::string Ship::getType() {
-    return "Ship";
+Vehicle::VehicleType Ship::getType() {
+    return Vehicle::SHIP;
 }
