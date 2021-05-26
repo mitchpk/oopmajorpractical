@@ -5,15 +5,13 @@
 #include "Vehicle.h"
 
 // constructor
-Vehicle::Vehicle(std::string name, int speed, int fuelCapacity, float fuelBurnRate, int price, Fuel fuel, Company *company) {
+Vehicle::Vehicle(std::string name, int speed, int fuelCapacity, float fuelBurnRate, int price, Fuel fuel) : m_equippedFuel(fuel) {
     m_speed = speed;
     m_fuelBurnRate = fuelBurnRate;
     m_name = name;
     m_fuelCapacity = fuelCapacity;
     m_price = price;
     m_remainingFuel = fuelCapacity;
-    m_equippedFuel = fuel;
-    m_company = company;
 }
 
 // returns vehicle speed
@@ -54,4 +52,12 @@ int Vehicle::getFuelCapacity() {
 // returns price of vehicle
 int Vehicle::getPrice() {
     return m_price;
+}
+
+void Vehicle::setCompany(Company *company) {
+    m_company = company;
+}
+
+int Vehicle::getRemainingFuel() {
+    return m_remainingFuel;
 }

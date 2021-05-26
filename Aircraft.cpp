@@ -2,8 +2,8 @@
 #include "Company.h"
 
 // constructor
-Aircraft::Aircraft(std::string name, int speed, int fuelCapacity, float fuelBurnRate, int price, Fuel fuel, Company *company)
-    : Vehicle(name, speed, fuelCapacity, fuelBurnRate, price, fuel, company) {}
+Aircraft::Aircraft(std::string name, int speed, int fuelCapacity, float fuelBurnRate, int price, Fuel fuel)
+    : Vehicle(name, speed, fuelCapacity, fuelBurnRate, price, fuel) {}
 
 // destructor
 Aircraft::~Aircraft() {}

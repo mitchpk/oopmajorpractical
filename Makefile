@@ -3,8 +3,8 @@ all: project test
 project: main.cpp Company.o Vehicle.o Package.o Destination.o Truck.o Aircraft.o Ship.o
 	g++ main.cpp Company.o Vehicle.o Package.o Destination.o Truck.o Aircraft.o Ship.o -o project
 
-CompanyTest: tests/Company.cpp Company.o
-	g++ tests/Company.cpp Company.o -o CompanyTest
+CompanyTest: tests/Company.cpp Company.o Vehicle.o
+	g++ tests/Company.cpp Company.o Vehicle.o -o CompanyTest
 
 PackageTest: tests/Package.cpp Package.o Destination.o
 	g++ tests/Package.cpp Package.o Destination.o -o PackageTest

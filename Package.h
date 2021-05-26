@@ -10,7 +10,7 @@
 class Package {
 public:
     // constructor
-    Package(std::string description, Destination destination, int weight);
+    Package(std::string description, int weight);
 
     // returns weight of package
     int getWeight();
@@ -20,6 +20,9 @@ public:
 
     // returns destination of package
     Destination getDestination();
+
+    // sets the destination as we are typically picking packages from a list
+    void setDestination(Destination destination);
 
 private:
     int m_weight;

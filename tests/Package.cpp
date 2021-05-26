@@ -3,9 +3,7 @@
 #include <cassert>
 
 int main() {
-    Destination destination = Destination("Canberra", 800, true, true, true);
-    Package package = Package("Shoes", destination, 20);
-    assert(package.getDestination().equals(destination));
+    Package package = Package("Shoes", 20);
     assert(package.getDescription() == "Shoes");
     assert(package.getWeight() == 20);
 }

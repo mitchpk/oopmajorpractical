@@ -7,8 +7,7 @@
 class Ship : public Vehicle {
 public:
     // constructor
-    Ship(std::string name, int speed, int fuelCapacity, float fuelBurnRate,
-        int price, Fuel fuel, Company *company);
+    Ship(std::string name, int speed, int fuelCapacity, float fuelBurnRate, int price, Fuel fuel);
     ~Ship();
 
     // attempt to make a trip based on currently loaded packages

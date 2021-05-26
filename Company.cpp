@@ -29,12 +29,18 @@ int Company::getBalance()
 
 
 // returns true if vehicle purchased successfully
-bool Company::purchaseVehicle(Vehicle *vehicle) { return true; }
-
-
-// returns true if fuel purchased successfully
-bool Company::purchaseFuel(Vehicle *vehicle, Fuel fuel, int quantity) {
-    if (ownsVehicle(vehicle)) return true;
+bool Company::purchaseVehicle(Vehicle *vehicle) { 
+    if (!ownsVehicle(vehicle)) {
+        if (vehicle->getPrice() <= getBalance()) {
+            vehicle->setCompany(this);
+            m_ownedVehicles.push_back(vehicle);
+            subractFunds(vehicle->getPrice());
+            return true;
+        }
+        std::cout << "Too expensive\n";
+    } else {
+        std::cout << "You already own this vehicle\n";
+    }
     return false;
 }
 
@@ -68,13 +74,15 @@ void Company::setBalance(int amount)
 // adds funds to the companies balance
 void Company::addFunds(int amount)
 {
-    m_balance += amount;
+    if (amount > 0)
+        m_balance += amount;
 }
 
 // subtracts funds from the companies
 void Company::subractFunds(int amount)
 {
-    m_balance -= amount;
+    if (amount > 0)
+        m_balance -= amount;
 
     if(m_balance <= 0)
     {

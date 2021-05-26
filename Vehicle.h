@@ -20,7 +20,7 @@ public:
     };
 
     // constructor
-    Vehicle(std::string name, int speed, int fuelCapacity, float fuelBurnRate, int price, Fuel fuel, Company *company);
+    Vehicle(std::string name, int speed, int fuelCapacity, float fuelBurnRate, int price, Fuel fuel);
 
     // destructor
     virtual ~Vehicle() {};
@@ -43,8 +43,14 @@ public:
     // returns vehicles fuel capacity
     int getFuelCapacity();
 
+    // returns current fuel stored in vehicle
+    int getRemainingFuel();
+
     // returns price of vehicle
     int getPrice();
+
+    // set the owner
+    void setCompany(Company *company);
 
     // pure virtual functions to be defined in child classes
     virtual void travel() = 0;

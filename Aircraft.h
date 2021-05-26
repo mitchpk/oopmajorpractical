@@ -6,7 +6,7 @@
 class Aircraft : public Vehicle {
 public:
     // constructor
-    Aircraft(std::string name, int speed, int fuelCapacity, float fuelBurnRate, int price, Fuel fuel, Company *company);
+    Aircraft(std::string name, int speed, int fuelCapacity, float fuelBurnRate, int price, Fuel fuel);
     ~Aircraft();
 
     // attempt to make a trip based on currently loaded packages

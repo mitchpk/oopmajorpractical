@@ -10,6 +10,9 @@ public:
         TRUCK,
         SHIP
     };
+    
+    // constructor for easy initialisation
+    Fuel(float efficiency, std::string name, FuelType type, int pricePerUnit) : efficiency(efficiency), name(name), type(type), pricePerUnit(pricePerUnit) {}
 
     float efficiency;
     std::string name;
