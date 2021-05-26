@@ -34,8 +34,8 @@ public:
     // returns vector of all packages on vehicle
     std::vector<Package> getPackages();
 
-    // returns true if package is successfully added
-    bool loadPackage(Package package);
+    // add cargo to vehicle 
+    void loadPackage(Package package);
 
     // returns name of vehicle
     std::string getName();

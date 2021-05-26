@@ -30,13 +30,8 @@ std::vector<Package> Vehicle::getPackages() {
 }
 
 // attempts to load package and if successful returns true, otherwise false
-bool Vehicle::loadPackage(Package package) {
-    if (m_packages.empty()) {
-        m_packages.push_back(package);
-        return true;
-    }
-
-    return false;
+void Vehicle::loadPackage(Package package) {
+    m_packages.push_back(package);
 }
 
 // returns name of vehicle

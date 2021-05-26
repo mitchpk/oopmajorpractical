@@ -8,9 +8,8 @@
 #include <iostream>
 
 #include "Options/BuyFuel.h"
-#include "Options/GetCompanyBalance.h"
-#include "Options/GetCompanyName.h"
 #include "Options/PurchaseVehicle.h"
+#include "Options/GetPackage.h"
 
 // initialise array of destinations to deliver to
 std::vector<Destination> destinations = {
@@ -88,6 +87,7 @@ std::vector<Option *> generateOptions() {
 
     options.push_back(new PurchaseVehicleOption(&vehicles));
     options.push_back(new BuyFuelOption());
+    options.push_back(new GetPackageOption(packages, destinations));
 
     // end of defining options
 

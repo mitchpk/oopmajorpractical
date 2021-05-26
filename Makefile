@@ -1,6 +1,6 @@
-all: project test
+all: Project Test
 
-project: main.cpp Company.o Vehicle.o Package.o Destination.o Truck.o Aircraft.o Ship.o
+Project: main.cpp Company.o Vehicle.o Package.o Destination.o Truck.o Aircraft.o Ship.o
 	g++ main.cpp Company.o Vehicle.o Package.o Destination.o Truck.o Aircraft.o Ship.o -o project
 
 CompanyTest: tests/Company.cpp Company.o Vehicle.o
@@ -9,7 +9,7 @@ CompanyTest: tests/Company.cpp Company.o Vehicle.o
 PackageTest: tests/Package.cpp Package.o Destination.o
 	g++ tests/Package.cpp Package.o Destination.o -o PackageTest
 
-test: CompanyTest PackageTest
+Test: CompanyTest PackageTest
 	./CompanyTest
 	./PackageTest
 
