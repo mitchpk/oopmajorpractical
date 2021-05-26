@@ -3,6 +3,7 @@
 #include <vector>
 
 #include "Vehicle.h"
+#include "Company.h"
 
 // constructor
 Vehicle::Vehicle(std::string name, int speed, int fuelCapacity, float fuelBurnRate, int price, Fuel fuel) : m_equippedFuel(fuel) {
@@ -56,3 +57,33 @@ void Vehicle::setCompany(Company *company) {
 int Vehicle::getRemainingFuel() {
     return m_remainingFuel;
 }
+
+bool Vehicle::buyFuel(Fuel fuel) {
+    // if fuel tank is full or wrong fuel type has been selected return false
+    if (fuel.type != getFuelType() || m_remainingFuel == m_fuelCapacity) {
+        return false;
+    }
+
+    if (m_equippedFuel.name != fuel.name) {
+        // Player wants to use a different fuel
+        if (m_fuelCapacity * fuel.pricePerUnit <= m_company->getBalance()) {
+            // Player has enough balance to purchase fuel
+            m_equippedFuel = fuel;
+            m_remainingFuel = m_fuelCapacity;
+            m_company->subractFunds(m_fuelCapacity * fuel.pricePerUnit);
+            return true;
+        }
+    } else {
+        // Player wants to refill the same fuel
+        int amountToRefill = m_fuelCapacity - m_remainingFuel;
+        if (amountToRefill * fuel.pricePerUnit <= m_company->getBalance()) {
+            // Player can purchase
+            m_remainingFuel = m_fuelCapacity;
+            m_company->subractFunds(amountToRefill * fuel.pricePerUnit);
+            return true;
+        }
+    }
+    // otherwise false
+    return false;
+}
+

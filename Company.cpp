@@ -84,8 +84,7 @@ void Company::subractFunds(int amount)
     if (amount > 0)
         m_balance -= amount;
 
-    if(m_balance <= 0)
-    {
+    if(m_balance < 0) {
         m_balance = 0;
         m_bankrupt = true;
     }

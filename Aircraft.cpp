@@ -12,39 +12,28 @@ Aircraft::~Aircraft() {}
 void Aircraft::travel() {
     Destination destination = m_packages[0].getDestination();
     int distanceToTravel = destination.getDistance();
+
+    srand(time(NULL));
+    int priceReward = m_packages.size() * (1000 + rand() % 1000); 
+
+    m_remainingFuel -= (((float)distanceToTravel / 1000) * m_fuelBurnRate) / m_equippedFuel.efficiency;
+    if (m_remainingFuel < 0) {
+        std::cout << "Your aircraft ran out of fuel!\n";
+        m_remainingFuel = 0;
+        return;
+    }
+
+    m_packages.clear();
+
+    m_company->addFunds(priceReward);
 }
 
 // purchases fuel and returns true if successful
-bool Aircraft::buyFuel(Fuel fuel) {
-    // if fuel tank is full or wrong fuel type has been selected return false
-    if (fuel.type != Fuel::AIRCRAFT || m_remainingFuel == m_fuelCapacity) {
-        return false;
-    }
-
-    if (m_equippedFuel.name != fuel.name) {
-        // Player wants to use a different fuel
-        if (m_fuelCapacity * fuel.pricePerUnit <= m_company->getBalance()) {
-            // Player has enough balance to purchase fuel
-            m_equippedFuel = fuel;
-            m_remainingFuel = m_fuelCapacity;
-            m_company->subractFunds(m_fuelCapacity * fuel.pricePerUnit);
-            return true;
-        }
-    } else {
-        // Player wants to refill the same fuel
-        int amountToRefill = m_fuelCapacity - m_remainingFuel;
-        if (amountToRefill * fuel.pricePerUnit <= m_company->getBalance()) {
-            // Player can purchase
-            m_remainingFuel = m_fuelCapacity;
-            m_company->subractFunds(amountToRefill * fuel.pricePerUnit);
-            return true;
-        }
-    }
-    // otherwise false
-    return false;
-}
-
 // returns "Aircraft"
 Vehicle::VehicleType Aircraft::getType() {
     return Vehicle::AIRCRAFT;
+}
+
+Fuel::FuelType Aircraft::getFuelType() {
+    return Fuel::AIRCRAFT;
 }

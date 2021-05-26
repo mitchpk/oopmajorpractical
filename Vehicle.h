@@ -48,13 +48,15 @@ public:
 
     // returns price of vehicle
     int getPrice();
+    
+    bool buyFuel(Fuel fuel);
 
     // set the owner
     void setCompany(Company *company);
 
     // pure virtual functions to be defined in child classes
     virtual void travel() = 0;
-    virtual bool buyFuel(Fuel fuel) = 0;
+    virtual Fuel::FuelType getFuelType() = 0;
     virtual VehicleType getType() = 0;
 
 protected:

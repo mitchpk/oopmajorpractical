@@ -10,6 +10,7 @@
 #include "Options/BuyFuel.h"
 #include "Options/PurchaseVehicle.h"
 #include "Options/GetPackage.h"
+#include "Options/SendVehicle.h"
 
 // initialise array of destinations to deliver to
 std::vector<Destination> destinations = {
@@ -86,8 +87,9 @@ std::vector<Option *> generateOptions() {
     std::vector<Option *> options;
 
     options.push_back(new PurchaseVehicleOption(&vehicles));
-    options.push_back(new BuyFuelOption());
+    options.push_back(new BuyFuelOption(fuels));
     options.push_back(new GetPackageOption(packages, destinations));
+    options.push_back(new SendVehicleOption());
 
     // end of defining options
 
@@ -143,6 +145,8 @@ int main() {
             std::cout << "Invalid option" << std::endl;
         }
     }
+
+    std::cout << "You are bankrupt! Game over.\n";
 
     return 0;
 }

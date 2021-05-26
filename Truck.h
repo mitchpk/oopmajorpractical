@@ -12,9 +12,8 @@ public:
     // attempt to make a trip based on currently loaded packages
     void travel() override;
 
-    // purchases fuel and returns true if successful
-    bool buyFuel(Fuel fuel) override;
-
     // returns "Truck"
     VehicleType getType() override;
+
+    Fuel::FuelType getFuelType() override;
 };

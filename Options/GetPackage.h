@@ -41,6 +41,13 @@ public:
             if (Option::is_number(selectedVehicle)) {
                 int selected = std::stoi(selectedVehicle);
                 if (selected <= vehicles.size() && selected > 0) {
+                    auto packages = vehicles[selected-1]->getPackages();
+                    if (packages.size() > 0) {
+                        if (!packages[0].getDestination().equals(chosenDestination)) {
+                            std::cout << "You already have a loaded package with a different destination\n";
+                            return;
+                        }
+                    }
                     if (chosenDestination.vehicleCanReach(vehicles[selected-1])) {
                         vehicles[selected-1]->loadPackage(chosenPackage);
                         std::cout << "Loaded package" << std::endl;

@@ -12,39 +12,27 @@ Truck::~Truck() {}
 void Truck::travel() {
     Destination destination = m_packages[0].getDestination();
     int distanceToTravel = destination.getDistance();
-}
 
-// purchases fuel and returns true if successful
-bool Truck::buyFuel(Fuel fuel) {
-    // if fuel tank is full or wrong fuel type has been selected return false
-    if (fuel.type != Fuel::TRUCK || m_remainingFuel == m_fuelCapacity) {
-        return false;
+    srand(time(NULL));
+    int priceReward = m_packages.size() * (1000 + rand() % 1000); 
+
+    m_remainingFuel -= (((float)distanceToTravel / 1000) * m_fuelBurnRate) / m_equippedFuel.efficiency;
+    if (m_remainingFuel < 0) {
+        std::cout << "Your truck ran out of fuel!\n";
+        m_remainingFuel = 0;
+        return;
     }
 
-    if (m_equippedFuel.name != fuel.name) {
-        // Player wants to use a different fuel
-        if (m_fuelCapacity * fuel.pricePerUnit <= m_company->getBalance()) {
-            // Player has enough balance to purchase fuel
-            m_equippedFuel = fuel;
-            m_remainingFuel = m_fuelCapacity;
-            m_company->subractFunds(m_fuelCapacity * fuel.pricePerUnit);
-            return true;
-        }
-    } else {
-        // Player wants to refill the same fuel
-        int amountToRefill = m_fuelCapacity - m_remainingFuel;
-        if (amountToRefill * fuel.pricePerUnit <= m_company->getBalance()) {
-            // Player can purchase
-            m_remainingFuel = m_fuelCapacity;
-            m_company->subractFunds(amountToRefill * fuel.pricePerUnit);
-            return true;
-        }
-    }
-    // otherwise false
-    return false;
+    m_packages.clear();
+
+    m_company->addFunds(priceReward);
 }
 
 // returns "Truck"
 Vehicle::VehicleType Truck::getType() {
     return Vehicle::TRUCK;
+}
+
+Fuel::FuelType Truck::getFuelType() {
+    return Fuel::TRUCK;
 }
