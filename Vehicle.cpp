@@ -74,7 +74,7 @@ bool Vehicle::buyFuel(Fuel fuel) {
             return true;
         }
     } else {
-        // Player wants to refill the same fuel
+        // If enters this loop, Player wants to refill the same fuel
         int amountToRefill = m_fuelCapacity - m_remainingFuel;
         if (amountToRefill * fuel.pricePerUnit <= m_company->getBalance()) {
             // Player can purchase

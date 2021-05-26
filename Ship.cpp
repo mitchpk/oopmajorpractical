@@ -14,11 +14,11 @@ void Ship::travel() {
     int distanceToTravel = destination.getDistance();
 
     srand(time(NULL));
-    int priceReward = m_packages.size() * (1000 + rand() % 1000); 
+    int priceReward = m_packages.size() * (1000 + rand() % 1000);
 
     m_remainingFuel -= (((float)distanceToTravel / 1000) * m_fuelBurnRate) / m_equippedFuel.efficiency;
     if (m_remainingFuel < 0) {
-        std::cout << "Your ship ran out of fuel!\n";
+        std::cout << "Your ship ran out of fuel! Please buy some more from the options menu. \n";
         m_remainingFuel = 0;
         return;
     }

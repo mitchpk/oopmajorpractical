@@ -10,8 +10,10 @@ public:
         TRUCK,
         SHIP
     };
-    
-    // constructor for easy initialisation
+
+    // Constructor which allows us to initialize the properties
+    //of the fuel, allowing us to create as many different variants
+    // as we need for the game
     Fuel(float efficiency, std::string name, FuelType type, int pricePerUnit) : efficiency(efficiency), name(name), type(type), pricePerUnit(pricePerUnit) {}
 
     float efficiency;

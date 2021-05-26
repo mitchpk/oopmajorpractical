@@ -111,7 +111,7 @@ int main() {
     Company company(desiredName, 5000);
 
     std::cout << "Great, your company " << company.getName() << " is ready to go."
-                        << std::endl;
+    << std::endl;
     std::cout << "Your company will start with: $" << company.getBalance() << std::endl;
     std::cout << "Check the menu below to see your options." << std::endl;
 
@@ -139,10 +139,10 @@ int main() {
                 generateOptions()[selected - 1]->execute(&company);
 
             } else {
-                std::cout << "Invalid option" << std::endl;
+                std::cout << "Invalid option selected. Please choose another" << std::endl;
             }
         } else {
-            std::cout << "Invalid option" << std::endl;
+            std::cout << "Invalid option selected. Please choose another." << std::endl;
         }
     }
 

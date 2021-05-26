@@ -14,7 +14,7 @@ void Aircraft::travel() {
     int distanceToTravel = destination.getDistance();
 
     srand(time(NULL));
-    int priceReward = m_packages.size() * (1000 + rand() % 1000); 
+    int priceReward = m_packages.size() * (1000 + rand() % 1000);
 
     m_remainingFuel -= (((float)distanceToTravel / 1000) * m_fuelBurnRate) / m_equippedFuel.efficiency;
     if (m_remainingFuel < 0) {
@@ -24,7 +24,6 @@ void Aircraft::travel() {
     }
 
     m_packages.clear();
-
     m_company->addFunds(priceReward);
 }
 
