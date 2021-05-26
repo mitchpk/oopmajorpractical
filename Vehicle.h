@@ -14,7 +14,7 @@ class Vehicle
 {
 public:
     // constructor
-    Vehicle(std::string name, int speed, int fuelCapacity, float fuelBurnRate, int price, Fuel fuel);
+    Vehicle(std::string name, int speed, int fuelCapacity, float fuelBurnRate, int price, Fuel fuel, Company *company);
 
     // destructor
     virtual ~Vehicle() {};
@@ -54,5 +54,5 @@ protected:
     int m_remainingFuel;
     int m_price;
     Fuel m_equippedFuel;
-    Company *m_ownedBy;
+    Company *m_company;
 };;

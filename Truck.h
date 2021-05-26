@@ -6,9 +6,10 @@
 class Truck : public Vehicle {
 public:
     // constructor
-    Truck(std::string name, int speed, int fuelCapacity, float fuelBurnRate, int price, Fuel fuel);
+    Truck(std::string name, int speed, int fuelCapacity, float fuelBurnRate, int price, Fuel fuel, Company *company);
+    ~Truck();
 
-    // assigns destination information to truck
+    // attempt to make a trip based on currently loaded packages
     void travel() override;
 
     // purchases fuel and returns true if successful

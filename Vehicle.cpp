@@ -5,7 +5,7 @@
 #include "Vehicle.h"
 
 // constructor
-Vehicle::Vehicle(std::string name, int speed, int fuelCapacity, float fuelBurnRate, int price, Fuel fuel) {
+Vehicle::Vehicle(std::string name, int speed, int fuelCapacity, float fuelBurnRate, int price, Fuel fuel, Company *company) {
     m_speed = speed;
     m_fuelBurnRate = fuelBurnRate;
     m_name = name;
@@ -13,6 +13,7 @@ Vehicle::Vehicle(std::string name, int speed, int fuelCapacity, float fuelBurnRa
     m_price = price;
     m_remainingFuel = fuelCapacity;
     m_equippedFuel = fuel;
+    m_company = company;
 }
 
 // returns vehicle speed

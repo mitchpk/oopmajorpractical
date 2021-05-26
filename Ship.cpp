@@ -1,23 +1,23 @@
-#include "Truck.h"
+#include "Ship.h"
 #include "Company.h"
 
 // constructor
-Truck::Truck(std::string name, int speed, int fuelCapacity, float fuelBurnRate, int price, Fuel fuel, Company *company)
+Ship::Ship(std::string name, int speed, int fuelCapacity, float fuelBurnRate, int price, Fuel fuel, Company *company)
     : Vehicle(name, speed, fuelCapacity, fuelBurnRate, price, fuel, company) {}
 
 // destructor
-Truck::~Truck() {}
+Ship::~Ship() {}
 
-// assigns destination information to truck
-void Truck::travel() {
+// assigns destination information to ship
+void Ship::travel() {
     Destination destination = m_packages[0].getDestination();
     int distanceToTravel = destination.getDistance();
 }
 
 // purchases fuel and returns true if successful
-bool Truck::buyFuel(Fuel fuel) {
+bool Ship::buyFuel(Fuel fuel) {
     // if fuel tank is full or wrong fuel type has been selected return false
-    if (fuel.type != Fuel::TRUCK || m_remainingFuel == m_fuelCapacity) {
+    if (fuel.type != Fuel::SHIP || m_remainingFuel == m_fuelCapacity) {
         return false;
     }
 
@@ -44,7 +44,7 @@ bool Truck::buyFuel(Fuel fuel) {
     return false;
 }
 
-// returns "Truck"
-std::string Truck::getType() {
-    return "Truck";
+// returns "Ship"
+std::string Ship::getType() {
+    return "Ship";
 }

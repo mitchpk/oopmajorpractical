@@ -51,7 +51,6 @@ bool Company::beginDelivery(Vehicle *vehicle, std::string destination) {
 
 // returns true if company is backrupt
 bool Company::isBankrupt() {
-
     return m_bankrupt;
 }
 
@@ -63,23 +62,23 @@ std::vector<Vehicle*> Company::getVehicles() {
 // sets the companies balance
 void Company::setBalance(int amount)
 {
-    Company::m_balance = amount;
+    m_balance = amount;
 }
 
 // adds funds to the companies balance
 void Company::addFunds(int amount)
 {
-    Company::m_balance = m_balance + amount;
+    m_balance += amount;
 }
 
 // subtracts funds from the companies
 void Company::subractFunds(int amount)
 {
-    Company::m_balance = m_balance - amount;
+    m_balance -= amount;
 
-    if( m_balance - amount < 0)
+    if(m_balance <= 0)
     {
-        Company::m_balance = 0;
-        Company::m_bankrupt = true;
+        m_balance = 0;
+        m_bankrupt = true;
     }
 }
