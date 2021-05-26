@@ -1,29 +1,17 @@
 all: project test
 
-project: main.cpp Company Vehicle Package Destination
+project: main.cpp Company.o Vehicle.o Package.o Destination.o
 	g++ main.cpp Company.o Vehicle.o Package.o Destination.o -o project
 
-Company: Company.h Company.cpp
-	g++ -c Company.cpp
-
-Vehicle: Vehicle.h Vehicle.cpp
-	g++ -c Vehicle.cpp
-
-Package: Package.h Package.cpp
-	g++ -c Package.cpp
-
-Destination: Destination.h Destination.cpp
-	g++ -c Destination.cpp
-
 CompanyTest: tests/Company.cpp Company.o
-	g++ tests/Company.cpp Company.o -o tests/CompanyTest
+	g++ tests/Company.cpp Company.o -o CompanyTest
 
-test: dummy CompanyTest
-	tests/dummy
-	tests/CompanyTest
+PackageTest: tests/Package.cpp Package.o Destination.o
+	g++ tests/Package.cpp Package.o Destination.o -o PackageTest
 
-dummy: tests/dummy.cpp
-	g++ tests/dummy.cpp -o tests/dummy
+test: CompanyTest PackageTest
+	./CompanyTest
+	./PackageTest
 
 clean:
-	rm -f project Company.o Vehicle.o Package.o Destination.o tests/CompanyTest tests/dummy
+	rm -f project *.o *Test 

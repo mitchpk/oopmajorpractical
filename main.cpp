@@ -74,17 +74,10 @@ void printOptions(std::vector<Option *> options) {
     }
 }
 
-// https://stackoverflow.com/questions/4654636/how-to-determine-if-a-string-is-a-number-with-c
-bool is_number(const std::string& s) {
-    std::string::const_iterator it = s.begin();
-    while (it != s.end() && std::isdigit(*it)) ++it;
-    return !s.empty() && it == s.end();
-}
-
 int main() {
     std::cout << welcome << std::endl;
     std::string desiredName;
-    std::cin >> desiredName;
+    std::getline(std::cin, desiredName);
     // company now starts with $5000 so they can buy a basic truck
     Company company(desiredName, 5000);
 
@@ -104,7 +97,7 @@ int main() {
         printOptions(generateOptions());
 
         std::cin >> selectedOption;
-        if (is_number(selectedOption)) {
+        if (Option::is_number(selectedOption)) {
             // check if option is in range
             // selected option works because +1 is the size of the vector
             // because we are printing out index of option +1

@@ -1,7 +1,7 @@
 #pragma once
 #include <string>
 
-// represents the fuel for the vehicles
+// represents different kinds of fuel for vehicles, with different efficiencies and prices
 class Fuel {
 public:
     // enum used to allocate numerical values to fuel types

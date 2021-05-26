@@ -36,3 +36,7 @@ unsigned int Destination::getDistance() {
 std::string Destination::getName() {
     return m_name;
 }
+
+bool Destination::equals(Destination other) {
+    return m_name == other.getName() && m_distance == other.getDistance();
+}

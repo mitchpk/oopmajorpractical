@@ -18,6 +18,9 @@ public:
     // returns destination name
     std::string getName();
 
+    // compare different destinations to see if they are the same
+    bool equals(Destination other);
+
 private:
     unsigned int m_distance;
     std::string m_name;
