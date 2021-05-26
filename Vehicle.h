@@ -34,7 +34,7 @@ public:
     // returns vector of all packages on vehicle
     std::vector<Package> getPackages();
 
-    // add cargo to vehicle 
+    // add cargo to vehicle
     void loadPackage(Package package);
 
     // returns name of vehicle
@@ -48,7 +48,7 @@ public:
 
     // returns price of vehicle
     int getPrice();
-    
+
     bool buyFuel(Fuel fuel);
 
     // set the owner
