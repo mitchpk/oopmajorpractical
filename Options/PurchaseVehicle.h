@@ -29,6 +29,10 @@ public:
                 }
 
                 std::cout << " (" << type << ")\n";
+                std::cout << "Speed: " << vehicle->getSpeed() << "km/h\n";
+                std::cout << "Fuel efficiency: " << vehicle->getFuelBurnRate() << std::endl;
+                std::cout << "Fuel capacity: " << vehicle->getFuelCapacity() << std::endl;
+                std::cout << std::endl;
             }
         }
 
